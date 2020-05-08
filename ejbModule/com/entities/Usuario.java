@@ -37,16 +37,6 @@ public class Usuario implements Serializable {
 		@JoinColumn(name = "USU_PERF_CODIGO",nullable=false)
 		private Perfil perfil;
 
-		public String setNombre;
-
-		public String setApellido;
-
-		public String setNomAcceso;
-
-		public String setContrasena;
-
-		public String setCorreo;
-
 		public Long getId() {
 			return id;
 		}

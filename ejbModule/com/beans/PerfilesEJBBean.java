@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.PersistenceException;
 
 import com.entities.Perfil;
-import com.enumerated.enumTipoPerfil;
+import com.enumerated.tipoPerfil;
 import com.exception.ServiciosException;
 
 /**
@@ -57,7 +57,7 @@ public class PerfilesEJBBean implements IPerfilesRemote {
 	public List<Perfil> getPerfilesByNombre(String txtTipoPerfil) throws ServiciosException {
 		try{
 			TypedQuery<Perfil> query = em.createQuery("SELECT p FROM Perfil p WHERE p.tipoPerfil LIKE :tipoPerfil",Perfil.class)
-    				.setParameter("tipoPerfil", enumTipoPerfil.valueOf(txtTipoPerfil)); 
+    				.setParameter("tipoPerfil", tipoPerfil.valueOf(txtTipoPerfil)); 
     		return query.getResultList();
 		}catch(PersistenceException e){
 			throw new ServiciosException("No se pudo obtener el perfil de nombre " + txtTipoPerfil);

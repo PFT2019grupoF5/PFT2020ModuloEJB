@@ -7,7 +7,6 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Almacenamiento
  *
  */
-//Comentario
 @Entity
 @Table(name="ALMACENAMIENTOS")
 public class Almacenamiento implements Serializable {
@@ -26,12 +25,15 @@ public class Almacenamiento implements Serializable {
 	private String nombre;
 	
 	@Column(name = "ALMA_COSTOOP", nullable = false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "ALMA_COSTOOP", nullable = false)
 	private double costoop;
 
 	@Column(name = "ALMA_CAPESTIBA", nullable = false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "ALMA_CAPESTIBA", nullable = false)
 	private double capestiba;
 
 	@Column(name = "ALMA_CAPPESO", nullable = false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "ALMA_CAPPESO", nullable = false)
 	private double cappeso;
 
 	@ManyToOne(optional=false)

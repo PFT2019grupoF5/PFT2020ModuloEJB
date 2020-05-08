@@ -1,7 +1,8 @@
 package com.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 import javax.persistence.*;
 import com.enumerated.estadoPedido;
 

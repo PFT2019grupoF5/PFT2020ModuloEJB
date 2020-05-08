@@ -28,8 +28,6 @@ public class Ciudad implements Serializable {
 	@Column(name = "CIU_NOMBRE", length=50, nullable=false, unique=true)
 	private String nombre;
 
-	public Object setNombre;
-
 	public Long getId() {
 		return id;
 	}

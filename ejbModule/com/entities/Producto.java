@@ -3,7 +3,8 @@ package com.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import com.enumerated.Segmentacion;
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 
 /**
  * Entity implementation class for Entity: Producto
@@ -27,6 +28,7 @@ public class Producto implements Serializable {
 	private String lote;
 
 	@Column(name = "PROD_PRECIO", nullable=false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "PROD_PRECIO", nullable=false)
 	private double precio;
 
 	@Column(name = "PROD_FELAB", nullable=false)
@@ -36,18 +38,22 @@ public class Producto implements Serializable {
 	private Date fven;
 
 	@Column(name = "PROD_PESO", nullable=false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "PROD_PESO", nullable=false)
 	private double peso;
 
 	@Column(name = "PROD_VOL", nullable=false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "PROD_VOL", nullable=false)
 	private double volumen;
 
 	@Column(name = "PROD_ESTIBA", nullable=false)
 	private int estiba;
 
 	@Column(name = "PROD_STKMIN", nullable=false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "PROD_STKMIN", nullable=false)
 	private double stkMin;
 
 	@Column(name = "PROD_STKTOTAL", nullable=false, columnDefinition = "FLOAT(5,2)")
+//	@Column(name = "PROD_STKTOTAL", nullable=false)
 	private double stkTotal;
 	
 	@Column(name = "PROD_SEGMENTAC", length = 1, nullable=false)
