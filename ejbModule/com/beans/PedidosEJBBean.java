@@ -1,8 +1,6 @@
 package com.beans;
 
 import java.util.List;
-
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,13 +16,12 @@ import com.exception.ServiciosException;
  * Session Bean implementation class PedidosEJBBean
  */
 @Stateless
-@LocalBean
-public class PedidosEJBBean implements IPedidosRemote{
+public class PedidosEJBBean implements IPedidosRemote {
 
 	@PersistenceContext
 	private EntityManager em;
 	
-	//@Override
+	@Override
 	public void addPedido(Pedido pedido) throws ServiciosException {
 		try{
 			em.persist(pedido);
@@ -33,7 +30,7 @@ public class PedidosEJBBean implements IPedidosRemote{
 		}
 	}
 
-	//@Override
+	@Override
 	public List<Pedido> getAllPedidos() throws ServiciosException {
 		try{		
 			TypedQuery<Pedido> query = em.createQuery("SELECT p FROM Pedido p",Pedido.class); 
@@ -43,7 +40,7 @@ public class PedidosEJBBean implements IPedidosRemote{
 		}
 	}
 
-	//@Override
+	@Override
 	public Pedido getPedido(Long id) throws ServiciosException {
 		try{
 			Pedido pedido = em.find(Pedido.class, id);
@@ -53,7 +50,7 @@ public class PedidosEJBBean implements IPedidosRemote{
 		}
 	}
 
-	//@Override
+	@Override
 	public void removePedido(Long id) throws ServiciosException {
 		try{
 			Pedido pedido = em.find(Pedido.class, id);
@@ -64,10 +61,9 @@ public class PedidosEJBBean implements IPedidosRemote{
 		}
 	}
 
-	//@Override
+	@Override
 	public void updatePedido(Pedido pedido) throws ServiciosException {
 		try{
-			System.out.println(pedido.getPedreccomentario());
 			em.merge(pedido);
 			em.flush();
 		}catch(PersistenceException e){

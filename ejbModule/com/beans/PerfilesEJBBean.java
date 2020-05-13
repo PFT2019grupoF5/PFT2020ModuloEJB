@@ -39,20 +39,6 @@ public class PerfilesEJBBean implements IPerfilesRemote {
 		}
 	}
 
-
-/*	
-	@Override
-	public List<Perfil> getPerfilesByNombre(String nombre) throws ServiciosException {
-		try{
-			TypedQuery<Perfil> query = em.createQuery("SELECT p FROM Perfil p WHERE p.nombre LIKE :nombre",Perfil.class)
-    				.setParameter("nombre", nombre); 
-    		return query.getResultList();
-		}catch(PersistenceException e){
-			throw new ServiciosException("No se pudo obtener el perfil de nombre " + nombre);
-    	}
-	}
-*/
-	
 	@Override
 	public List<Perfil> getPerfilesByNombre(String txtTipoPerfil) throws ServiciosException {
 		try{
