@@ -43,10 +43,6 @@ public class UsuariosEJBBean implements IUsuariosRemote {
 	@Override
 	public List<Usuario> getUsuariosBynomAcceso(String nomAcceso) throws ServiciosException {
 		try{
-			
-			System.out.print(nomAcceso);
-			
-			
 			TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.nomAcceso LIKE :nomAcceso",Usuario.class)
     				.setParameter("nomAcceso", nomAcceso); 
     		return query.getResultList();

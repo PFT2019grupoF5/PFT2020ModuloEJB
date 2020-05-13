@@ -3,8 +3,9 @@ package com.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import com.enumerated.Segmentacion;
-//import java.util.Date;
-import java.sql.Date;
+import java.util.Date;
+//import java.sql.Date;
+
 
 /**
  * Entity implementation class for Entity: Producto
