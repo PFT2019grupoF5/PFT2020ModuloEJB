@@ -1,10 +1,10 @@
 package com.entities;
 
 import java.io.Serializable;
-//import java.util.Date;
-import java.sql.Date;
 import javax.persistence.*;
 import com.enumerated.tipoMovimiento;
+import java.util.Date;
+
 
 /**
  * Entity implementation class for Entity: Movimiento
@@ -18,7 +18,7 @@ public class Movimiento implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "MOV_ID")
+	@Column(name = "MOV_ID",nullable=false)
 	private Long id;
 	
 	@Column(name = "MOV_FECHA", nullable=false)
@@ -30,12 +30,8 @@ public class Movimiento implements Serializable {
 	@Column(length=250, name = "MOV_DESCRIPCION")
 	private String descripcion;
 
-	//	wrong column type encountered in column [MOV_COSTO] in table [MOVIMIENTOS];
-	//	found [float (Types#FLOAT)],
-	//	but expecting [double precision (Types#DOUBLE)]
-			
-	@Column(name = "MOV_COSTO", nullable=false, columnDefinition = "FLOAT(5,2)")
 //	@Column(name = "MOV_COSTO", nullable=false)
+	@Column(name = "MOV_COSTO", nullable=false, columnDefinition = "FLOAT(5,2)")
 	private double costo;
 	
 	@Column(name = "MOV_TIPO", length = 1, nullable=false)

@@ -1,10 +1,9 @@
 package com.entities;
 
 import java.io.Serializable;
-//import java.util.Date;
-import java.sql.Date;
 import javax.persistence.*;
 import com.enumerated.estadoPedido;
+import java.util.Date;
 
 /**
  * Entity implementation class for Entity: Pedido
@@ -18,7 +17,7 @@ public class Pedido implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "PED_ID")
+	@Column(name = "PED_ID",nullable=false)
 	private Long id;
 	
 	@Column(name = "PED_FEC_ESTIM_ENT", nullable=false)
