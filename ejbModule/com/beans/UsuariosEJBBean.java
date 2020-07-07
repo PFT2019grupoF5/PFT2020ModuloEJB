@@ -22,44 +22,6 @@ public class UsuariosEJBBean implements IUsuariosRemote {
 	private EntityManager em;
 	
 	@Override
-	public boolean checkUser(String user, String pass) throws ServiciosException {
-		System.out.println("llega "+user+" "+pass);
-		boolean validPwd = false;
-		try {
-			
-			Usuario t = getUnUsuarioBynomAcceso(user);
-			Usuario u = getPassw(pass);
-			System.out.println("Pasa por getters");
-			if (u.getId() == t.getId()) {
-
-				validPwd = true;
-			}
-		} catch (Exception e) {
-			try {
-				throw new Exception(e.getMessage());
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		return validPwd;
-	}
-	
-	@Override
-	public Usuario getPassw(String pass) throws ServiciosException {
-		try{
-			
-			System.out.print(pass);
-			
-			TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.contrasena LIKE :contrasena",Usuario.class)
-    				.setParameter("nomAcceso", pass); 
-    		return query.getSingleResult();
-		}catch(PersistenceException e){
-			throw new ServiciosException("No se pudo obtener el usuario de contrasena " + pass);
-    	}
-	}
-	
-	@Override
 	public void addUsuario(Usuario usuario) throws ServiciosException {
 		try{
 			em.persist(usuario);

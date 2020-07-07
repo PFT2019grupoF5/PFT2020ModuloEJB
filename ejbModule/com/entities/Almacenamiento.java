@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="ALMACENAMIENTOS")
+@Table(name="ALMACENAMIENTOS", schema="PROYECTO")
 public class Almacenamiento implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

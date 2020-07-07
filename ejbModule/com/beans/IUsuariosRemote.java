@@ -16,7 +16,5 @@ public interface IUsuariosRemote {
 	public Usuario getUsuario(Long id) throws ServiciosException;
 	public void removeUsuario(Long id) throws ServiciosException;
 	public void updateUsuario(Usuario usuario) throws ServiciosException;
-	boolean checkUser(String user, String pass) throws ServiciosException;
-	Usuario getPassw(String pass) throws ServiciosException;
 	
 }

@@ -10,6 +10,9 @@ import javax.persistence.PersistenceException;
 import com.entities.Movimiento;
 import com.exception.ServiciosException;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -51,6 +54,34 @@ public class MovimientosEJBBean implements IMovimientosRemote {
     	}
 	}
 
+	
+	@Override
+	public List<Movimiento> getMovimientosEntreFecha(java.util.Date fechaIni, java.util.Date fechaFin) throws ServiciosException {
+		try{
+			
+			//try {
+				//SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yy");
+			    //java.util.Date fechaIni = null;
+		        //java.util.Date fechaFin = null;
+		        
+				//fechaIni = formato.parse(fecini);
+	            //fechaFin = formato.parse(fecfin);
+	              
+				TypedQuery<Movimiento> query = em.createQuery("SELECT m FROM Movimiento m WHERE m.MOV_FECHA BETWEEN :fechaIni AND :fechaFin", Movimiento.class)
+	    				.setParameter("fechaIni", fechaIni) 
+						.setParameter("fechaFin", fechaFin);
+				
+	    		return query.getResultList();
+			
+			//}catch(PersistenceException | ParseException e){
+			//	throw new ServiciosException("No se pudo convertir la fecha, debe estar en formato dd/mm/aaaa");
+	    	//} 
+		}catch(PersistenceException e){
+			throw new ServiciosException("No se pudieron obtener Movimientos entre fechas " + fechaIni + " y " + fechaFin);
+    	}
+	}
+
+	
 	@Override
 	public Movimiento getMovimiento(Long id) throws ServiciosException {
 		try{

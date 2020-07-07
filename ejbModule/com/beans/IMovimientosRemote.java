@@ -1,5 +1,6 @@
 package com.beans;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -15,5 +16,7 @@ public interface IMovimientosRemote {
 	public Movimiento getMovimiento(Long id) throws ServiciosException;
 	public void removeMovimiento(Long id) throws ServiciosException;
 	public void updateMovimiento(Movimiento movimiento) throws ServiciosException;
-	
+
+	public List<Movimiento> getMovimientosEntreFecha(java.util.Date fecinicial, java.util.Date fecfinal) throws ServiciosException;
+
 }
