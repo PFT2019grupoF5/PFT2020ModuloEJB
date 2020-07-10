@@ -83,15 +83,10 @@ public class UsuariosEJBBean implements IUsuariosRemote {
 	}
 
 
-//  A AGREGAR
-	
-/*
 	@Override
 	public Usuario getUnUsuarioBynomAcceso(String nomAcceso) throws ServiciosException {
 		try{
-			
 			System.out.print(nomAcceso);
-			
 			TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.nomAcceso LIKE :nomAcceso",Usuario.class)
     				.setParameter("nomAcceso", nomAcceso); 
     		return query.getSingleResult();
@@ -99,17 +94,7 @@ public class UsuariosEJBBean implements IUsuariosRemote {
 			throw new ServiciosException("No se pudo obtener el usuario de nomAcceso " + nomAcceso);
     	}
 	}
-*/
-	@Override
-	public Usuario getUnUsuarioBynomAcceso(String nomAcceso) throws ServiciosException {
-		try{
-			Usuario usuario = em.find(Usuario.class, nomAcceso);
-			return usuario;
-		}catch(PersistenceException e){
-			throw new ServiciosException("No se pudo encontrar el usuario");
-		}
-	}
-	
+
 	
 }
 
