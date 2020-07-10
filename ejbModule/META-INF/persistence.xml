@@ -3,16 +3,6 @@
 	<persistence-unit name="PFT2020ModuloEJB">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/OracleDS</jta-data-source>
-		<class>com.entities.Almacenamiento</class>
-		<class>com.entities.Ciudad</class>
-		<class>com.entities.EntidadLoc</class>
-		<class>com.entities.Familia</class>
-		<class>com.entities.Movimiento</class>
-		<class>com.entities.Pedido</class>
-		<class>com.entities.Perfil</class>
-		<class>com.entities.Producto</class>
-		<class>com.entities.RenglonPedido</class>
-		<class>com.entities.Usuario</class>
 	<properties>
 		<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
 		<property name="hibernate.hbm2ddl.auto" value="validate"/>

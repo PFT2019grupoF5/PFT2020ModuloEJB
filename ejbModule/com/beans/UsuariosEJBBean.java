@@ -85,6 +85,7 @@ public class UsuariosEJBBean implements IUsuariosRemote {
 
 //  A AGREGAR
 	
+/*
 	@Override
 	public Usuario getUnUsuarioBynomAcceso(String nomAcceso) throws ServiciosException {
 		try{
@@ -98,8 +99,17 @@ public class UsuariosEJBBean implements IUsuariosRemote {
 			throw new ServiciosException("No se pudo obtener el usuario de nomAcceso " + nomAcceso);
     	}
 	}
-
-
-
+*/
+	@Override
+	public Usuario getUnUsuarioBynomAcceso(String nomAcceso) throws ServiciosException {
+		try{
+			Usuario usuario = em.find(Usuario.class, nomAcceso);
+			return usuario;
+		}catch(PersistenceException e){
+			throw new ServiciosException("No se pudo encontrar el usuario");
+		}
+	}
+	
+	
 }
 
