@@ -94,7 +94,7 @@ public class PedidosEJBBean implements IPedidosRemote {
 				System.out.println("fechaDesde sql   :" + sqlfechaDesde.toString());
 				System.out.println("fechaHasta sql   :" + sqlfechaHasta.toString());
 				
-				query = em.createQuery("SELECT p FROM Pedido p WHERE p.fecha BETWEEN :fechaDesde AND :fechaHasta",Pedido.class) 
+				query = em.createQuery("SELECT p FROM Pedido p WHERE p.fecha BETWEEN :fechaDesde AND :fechaHasta ORDER BY p.fecha ASC",Pedido.class) 
 					.setParameter("fechaDesde", sqlfechaDesde)
 					.setParameter("fechaHasta", sqlfechaHasta);
 	        } catch (ParseException ex) {
