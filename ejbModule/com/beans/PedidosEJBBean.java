@@ -90,7 +90,7 @@ public class PedidosEJBBean implements IPedidosRemote {
 	        }
 			return query.getResultList();
 		}catch(PersistenceException e){
-			throw new ServiciosException("No se pudo obtener lista de pedidos");
+			throw new ServiciosException("No se pudo obtener reporte de pedidos entre fechas");
 		}
 	}
 
