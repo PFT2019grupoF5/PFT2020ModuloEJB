@@ -15,4 +15,6 @@ public interface IPedidosRemote {
 	public void removePedido(Long id) throws ServiciosException;
 	public void updatePedido(Pedido pedido) throws ServiciosException;
 	
+	public List<Pedido> getPedidosEntreFechas(String fechaDesde, String fechaHasta) throws ServiciosException;
+	
 }

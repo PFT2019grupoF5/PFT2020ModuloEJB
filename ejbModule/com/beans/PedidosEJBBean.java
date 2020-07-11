@@ -1,5 +1,8 @@
 package com.beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -7,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.PersistenceException;
 
+import com.entities.Movimiento;
 import com.entities.Pedido;
 import com.exception.ServiciosException;
 
@@ -71,5 +75,26 @@ public class PedidosEJBBean implements IPedidosRemote {
 		}	
 	}
 
+	@Override
+	public List<Pedido> getPedidosEntreFechas(String fechaDesde, String fechaHasta) throws ServiciosException {
+		TypedQuery<Pedido> query = null;
+		try{
+			try {
+	            SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+	            Date fDesde = dateFormat.parse(fechaDesde);
+	            Date fHasta = dateFormat.parse(fechaHasta);
+				query = em.createQuery("SELECT p FROM Pedido p WHERE p.PED_FECHA BETWEEN :fechaDesde AND :fechaHasta",Pedido.class) 
+					.setParameter("fechaDesde", fDesde)
+					.setParameter("fechaHasta", fHasta);
+	        } catch (ParseException ex) {
+	        }
+			return query.getResultList();
+		}catch(PersistenceException e){
+			throw new ServiciosException("No se pudo obtener lista de pedidos");
+		}
+	}
+
+
+	
 }
 
