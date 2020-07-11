@@ -83,9 +83,20 @@ public class PedidosEJBBean implements IPedidosRemote {
 	            SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
 	            Date fDesde = dateFormat.parse(fechaDesde);
 	            Date fHasta = dateFormat.parse(fechaHasta);
-				query = em.createQuery("SELECT p FROM Pedido p WHERE p.PED_FECHA BETWEEN :fechaDesde AND :fechaHasta",Pedido.class) 
-					.setParameter("fechaDesde", fDesde)
-					.setParameter("fechaHasta", fHasta);
+
+		        java.sql.Date sqlfechaDesde = convert(fDesde);
+		        java.sql.Date sqlfechaHasta = convert(fHasta);
+
+				System.out.println("fechaDesde String:" + fechaDesde);
+				System.out.println("fechaHasta String:" + fechaHasta);
+				System.out.println("fechaDesde Date  :" + fDesde.toString());
+				System.out.println("fechaHasta Date  :" + fDesde.toString());
+				System.out.println("fechaDesde sql   :" + sqlfechaDesde.toString());
+				System.out.println("fechaHasta sql   :" + sqlfechaHasta.toString());
+				
+				query = em.createQuery("SELECT p FROM Pedido p WHERE p.fecha BETWEEN :fechaDesde AND :fechaHasta",Pedido.class) 
+					.setParameter("fechaDesde", sqlfechaDesde)
+					.setParameter("fechaHasta", sqlfechaHasta);
 	        } catch (ParseException ex) {
 	        }
 			return query.getResultList();
@@ -94,7 +105,10 @@ public class PedidosEJBBean implements IPedidosRemote {
 		}
 	}
 
-
+    private static java.sql.Date convert(java.util.Date uDate) {
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        return sDate;
+    }
 	
 }
 
