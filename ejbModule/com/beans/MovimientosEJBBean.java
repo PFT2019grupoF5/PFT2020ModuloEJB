@@ -7,7 +7,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.PersistenceException;
 
+import com.entities.Almacenamiento;
 import com.entities.Movimiento;
+import com.entities.Producto;
 import com.exception.ServiciosException;
 
 import java.sql.Date;
@@ -43,6 +45,22 @@ public class MovimientosEJBBean implements IMovimientosRemote {
 		}
 	}
 
+	@Override
+	public List<Movimiento> getMovimientosProductoAlmacenamiento(Producto producto, Almacenamiento almacenamiento) throws ServiciosException {
+		try{
+			// Long productoID = producto.getId();
+			// Long almacenamientoID =almacenamiento.getId();
+			
+			TypedQuery<Movimiento> query = em.createQuery("SELECT m FROM Movimiento m WHERE m.producto LIKE :producto AND m.almacenamiento LIKE :almacenamiento",Movimiento.class)
+    				.setParameter("producto", producto) 
+					.setParameter("almacenamiento", almacenamiento); 
+    		return query.getResultList();
+		}catch(PersistenceException e){
+			throw new ServiciosException("No se pudo obtener lista de movimientos");
+		}
+	}
+	
+	
 	@Override
 	public List<Movimiento> getMovimientosByDescripcion(String descripcion) throws ServiciosException {
 		try{

@@ -82,6 +82,15 @@ public class ProductosEJBBean implements IProductosRemote {
 		}	
 	}
 
-	
-}
+	@Override
+	public Boolean StocKsuficienteDeProducto(int cantidad, String nombreProducto) throws ServiciosException {
+		try{
+			TypedQuery<Producto> query = em.createQuery("SELECT p FROM Producto p WHERE p.nombre LIKE :nombre",Producto.class)
+    				.setParameter("nombre", nombreProducto); 
+			return query.getResultList().get(0).getStkTotal() >= cantidad;
+		}catch(PersistenceException e){
+			throw new ServiciosException("No se pudo obtener el producto de nombre " + nombreProducto);
+		}
+	}
 
+}
