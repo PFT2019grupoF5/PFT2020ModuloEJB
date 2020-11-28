@@ -15,5 +15,6 @@ public interface IProductosRemote {
 	public Producto getProducto(Long id) throws ServiciosException;
 	public void removeProducto(Long id) throws ServiciosException;
 	public void updateProducto(Producto producto) throws ServiciosException;
+	public Boolean StocKsuficienteDeProducto(int cantidad, String nombreProducto) throws ServiciosException;
 	
 }

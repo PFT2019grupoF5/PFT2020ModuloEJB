@@ -16,7 +16,7 @@ import com.exception.ServiciosException;
  * Session Bean implementation class RenglonPedidosEJBBean
  */
 @Stateless
-public class RenglonPedidosEJBBean2 implements IRenglonPedidosRemote {
+public class RenglonPedidosEJBBean implements IRenglonPedidosRemote {
 
 	@PersistenceContext
 	private EntityManager em;

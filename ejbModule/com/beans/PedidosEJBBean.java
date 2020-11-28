@@ -10,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.PersistenceException;
 
-import com.entities.Movimiento;
 import com.entities.Pedido;
 import com.exception.ServiciosException;
 
