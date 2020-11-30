@@ -11,7 +11,6 @@ import com.entities.Producto;
 import com.exception.ServiciosException;
 
 
-
 /**
  * Session Bean implementation class ProductosEJBBean
  */
